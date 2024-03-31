@@ -1,0 +1,378 @@
+﻿#introCarousel,
+.carousel-inner,
+.carousel-item,
+.carousel-item.active {
+    height: 100vh;
+}
+
+    .carousel-item:nth-child(1) {
+        background-image: url('Image/carosel/eductionevent.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .carousel-item:nth-child(2) {
+        background-image: url('Image/carosel/edu2.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .carousel-item:nth-child(3) {
+        background-image: url('Image/carosel/edu3.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+   /* .carousel-item:nth-child(4) {
+        background-image: url('Image/carosel/muwa.JPG');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .carousel-item:nth-child(5) {
+        background-image: url('Image/carosel/jungle1.JPG');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .carousel-item:nth-child(6) {
+        background-image: url('Image/carosel/stock.JPG');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+    .carousel-item:nth-child(7) {
+        background-image: url('Image/carosel/swim.JPG');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+    .carousel-item:nth-child(8) {
+        background-image: url('Image/carosel/tree.JPG');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;f
+    }
+    .carousel-item:nth-child(9) {
+        background-image: url('../Content/Image/katussaslider.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }*/
+
+/* Height for devices larger than 576px */
+@media (min-width: 992px) {
+    #introCarousel {
+        margin-top: -58.59px;
+    }
+
+    #introCarousel,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-item.active {
+        height: 50vh;
+    }
+}
+
+.navbar .nav-link {
+    color: black !important;
+}
+
+
+/*carosal Campaign*/
+
+#introCarouselCampaign,
+.carousel-item-campaign:nth-child(1) {
+    background-image: url('Image/carosel/tree.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+@media (min-width: 992px) {
+    #introCarouselCampaign {
+        margin-top: -58.59px;
+    }
+
+    #introCarouselCampaign,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-item.active {
+        height: 50vh;
+    }
+}
+
+.navbar .nav-link {
+    color: black !important;
+}
+
+/*Knowldge sharin*/
+
+#introCarouselKnowldgeSharing,
+.carousel-item-knowldge-sharing:nth-child(1) {
+    background-image: url('Image/carosel/stock.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+@media (min-width: 992px) {
+    #introCarouselKnowldgeSharing {
+        margin-top: -58.59px;
+    }
+
+    #introCarouselKnowldgeSharing,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-item.active {
+        height: 50vh;
+    }
+}
+
+.navbar .nav-link {
+    color: black !important;
+}
+
+/*Comminity Empowerment*/
+
+#introCarouselComminityEmpowerment,
+.carousel-item-community-empowerment:nth-child(1) {
+    background-image: url('Image/carosel/goona.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+@media (min-width: 992px) {
+    #introCarouselComminityEmpowerment {
+        margin-top: -58.59px;
+    }
+
+    #introCarouselComminityEmpowerment,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-item.active {
+        height: 50vh;
+    }
+}
+
+.navbar .nav-link {
+    color: #fff !important;
+}
+
+/*Our Team*/
+
+#introCarouselOurTeam,
+.carousel-item-our-team:nth-child(1) {
+    background-image: url('Image/carosel/edu2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+@media (min-width: 992px) {
+    #introCarouselOurTeam {
+        margin-top: -58.59px;
+    }
+
+    #introCarouselOurTeam,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-item.active {
+        height: 50vh;
+    }
+}
+
+.navbar .nav-link {
+    color: #fff !important;
+}
+
+/*or salary details*/
+#introCarouselOurSalary,
+.carousel-item-our-salary:nth-child(1) {
+    background-image: url('Image/carosel/eductionevent.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+@media (min-width: 992px) {
+    #introCarouselOurSalary {
+        margin-top: -58.59px;
+    }
+
+    #introCarouselOurSalary,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-item.active {
+        height: 50vh;
+    }
+}
+
+.navbar .nav-link {
+    color: #fff !important;
+}
+
+
+/*Project*/
+
+#introCarouselProposal,
+.carousel-item-project:nth-child(1) {
+    background-image: url('Image/carosel/jungle1.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+@media (min-width: 992px) {
+    #introCarouselProposal {
+        margin-top: -58.59px;
+    }
+
+    #introCarouselProposal,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-item.active {
+        height: 50vh;
+    }
+}
+
+.navbar .nav-link {
+    color: #fff !important;
+}
+/*Our Product*/
+
+#introCarouselOurProduct,
+.carousel-item-ourproduct:nth-child(1) {
+    background-image: url('Image/carosel/pilla.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+@media (min-width: 992px) {
+    #introCarouselOurProduct {
+        margin-top: -58.59px;
+    }
+
+    #introCarouselOurProduct,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-item.active {
+        height: 50vh;
+    }
+}
+
+.navbar .nav-link {
+    color: #fff !important;
+}
+
+/*Project*/
+
+#introCarouselFutureProposal,
+.carousel-item-future-project:nth-child(1) {
+    background-image: url('Image/carosel/jungle.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+@media (min-width: 992px) {
+    #introCarouselFutureProposal {
+        margin-top: -58.59px;
+    }
+
+    #introCarouselFutureProposal,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-item.active {
+        height: 50vh;
+    }
+}
+
+.navbar .nav-link {
+    color: #fff !important;
+}
+
+/*card testomonial*/
+
+.testimonial-card .card-up {
+    height: 120px;
+    overflow: hidden;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+
+.aqua-gradient {
+    background: linear-gradient(40deg, #2096ff, #05ffa3) !important;
+}
+
+.testimonial-card .avatar {
+    width: 120px;
+    margin-top: -60px;
+    overflow: hidden;
+    border: 5px solid #fff;
+    border-radius: 50%;
+}
+
+
+.footer-light {
+    background-color: #f1efef !important;
+}
+
+.image-flex-size {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.f-14 {
+    font-size: 14px
+}
+.f-16 {
+    font-size: 16px
+}
+.f-15 {
+    font-size: 15px
+}
+.f-18 {
+    font-size: 18px
+}
+.f-13 {
+    font-size: 13px
+}
+
+/*pre loader*/
+
+@media (min-width: 992px) {
+    #navigationbartrendil {
+        z-index: 10 !important;
+        margin-bottom: 58px !important;
+    }
+}
+
+.capital-text {
+    text-transform: uppercase;
+}
+
+.text-align-justify {
+    text-align: justify
+}
+
+.yllow-gradient {
+    background: linear-gradient(40deg, #beb23b, #dbd88a) !important;
+}
+
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #f6d365;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+}

@@ -1,0 +1,105 @@
+﻿@using Trendil.Models
+@model List<ContactUsVM>
+@{
+    ViewBag.Title = "Contact Us";
+}
+
+<main class="mt-5">
+    <div class="container">
+        <section>
+            <div class="row">
+                <div class="col-md-12 gx-5 mb-4">
+                    <h4 class="f-18 text-center"><strong>CONTACT US</strong></h4>
+                    <p class="text-muted text-center f-14 text-align-justify">
+                        Contact Us Details
+                    </p>
+                    <p class="text-muted text-center f-14 text-align-justify">
+                        <a href="@Url.Action("Dashboard","Account")">Go to Dashboard</a>
+                    </p>
+
+                    <div class="row">
+                        <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th class="th-sm">
+                                        First Name
+                                    </th>
+                                    <th class="th-sm">
+                                        Last Name
+                                    </th>
+                                    <th class="th-sm">
+                                        Email
+                                    </th>
+                                    <th class="th-sm">
+                                        Comment
+                                    </th>
+
+                                    <th class="th-sm">
+                                        Date
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null && Model.Count() > 0)
+                                {
+                                    foreach (var singleDonation in Model)
+                                    {
+                                        <tr>
+                                            <td>@singleDonation.FirstName</td>
+                                            <td>@singleDonation.LastName</td>
+                                            <td>@singleDonation.Email</td>
+                                            <td>@singleDonation.Comment</td>
+                                            <td>@singleDonation.CreateDate</td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>
+                                        First Name
+                                    </th>
+                                    <th>
+                                        Last Name
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Comment
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<!--Main layout-->
+<style>
+    table.dataTable thead .sorting:after,
+    table.dataTable thead .sorting:before,
+    table.dataTable thead .sorting_asc:after,
+    table.dataTable thead .sorting_asc:before,
+    table.dataTable thead .sorting_asc_disabled:after,
+    table.dataTable thead .sorting_asc_disabled:before,
+    table.dataTable thead .sorting_desc:after,
+    table.dataTable thead .sorting_desc:before,
+    table.dataTable thead .sorting_desc_disabled:after,
+    table.dataTable thead .sorting_desc_disabled:before {
+        bottom: .5em;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        $('#dtBasicExample').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+    });
+</script>

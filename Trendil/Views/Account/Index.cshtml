@@ -1,0 +1,63 @@
+﻿@using Trendil.Models
+@model LoginVM
+@{
+    ViewBag.Title = "Donation";
+}
+
+<main class="mt-5">
+    <div class="container">
+        <section>
+            <div class="row">
+                <div class="col-md-3 gx-5 mb-4">
+
+                </div>
+
+                <div class="col-md-6 gx-5 mb-4">
+                    <h4 class="f-18 text-center"><strong>Login</strong></h4>
+                    <p class="text-muted f-14 text-align-justify text-center">
+                        ENTER YOUR ADMIN CREDENTIALS
+                    </p>
+
+                    @if (Model != null && Model.Error == null)
+                    {
+                        <p style="background: #c3c567; color: white; padding: 10px; align: center; text-align: center;">
+                            SUCCESSFULLY SENT DETAILS !
+                        </p>
+                    }
+                    else if (Model != null && Model.Error != null)
+                    {
+                        <p style="background: red; color: white; padding: 10px; align: center; text-align: center;">
+                            @Model.Error
+                        </p>
+                    }
+
+                    @using (Html.BeginForm("PostLogin", "Account", FormMethod.Post))
+                    {
+
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            @Html.TextBoxFor(d => d.Email, new { @id = "form3Example3", @class = "form-control", type = "email" })
+                            @*<input type="email" id="form3Example3" class="form-control" />*@
+                            <label class="form-label" for="form3Example3">Email</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            @Html.TextBoxFor(d => d.Password, new { @id = "form3Example3", @class = "form-control", type = "password" })
+                            @*<input type="email" id="form3Example3" class="form-control" />*@
+                            <label class="form-label" for="form3Example3">Password</label>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-4" id="payhere-payment">Login</button>
+                    }
+                    <!-- 2 column grid layout with text inputs for the first and last names -->
+
+                </div>
+                <div class="col-md-3 gx-5 mb-4">
+
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<!--Main layout-->

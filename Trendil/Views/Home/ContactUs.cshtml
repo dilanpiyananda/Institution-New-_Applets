@@ -1,0 +1,81 @@
+﻿@using Trendil.Models
+@model ContactUsVM
+@{
+    ViewBag.Title = "Conatact Us";
+}
+
+<main class="mt-5">
+    <div class="container">
+        <section>
+            <div class="row">
+                <div class="col-md-6 gx-5 mb-4">
+                    <div class="bg-image hover-overlay ripple shadow-2-strong d-flex align-items-center justify-content-center" data-mdb-ripple-color="light">
+                        <img src="~/Content/Image/Contact_us.jpg" class="img-fluid"/>
+                        <a>
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 gx-5 mb-4">
+                    <h4 class="f-18"><strong>CONTACT US</strong></h4><br />
+                    <p class="text-muted f-14 text-align-justify">
+                        We would like to hear from you. Please let us know your comments.
+                    </p>
+                    @if (Model != null && Model.Success == true)
+                    {
+                        <p style="background: #c3c567; color: white; padding: 10px; align: center; text-align: center;">
+                            SUCCESSFULLY SENT DETAILS !
+                        </p>
+                    }
+                    else if (Model != null && Model.Success == false)
+                    {
+                        <p style="background: red; color: white; padding: 10px; align: center; text-align: center;">
+                            DETAIL SENT ERROR !
+                        </p>
+                    }
+
+                    @using (Html.BeginForm("ContactUs", "Home", FormMethod.Post))
+                    {
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="form-outline">
+                                    @Html.TextBoxFor(d => d.FirstName, new { @id = "form3Example1", @class = "form-control", @required = true })
+                                    @*<input type="text" id="form3Example1" class="form-control" />*@
+                                    <label class="form-label" for="form3Example1">First name</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-outline">
+
+                                    @Html.TextBoxFor(d => d.LastName, new { @id = "form3Example2", @class = "form-control", @required = true })
+                                    @*<input type="text" id="form3Example2" class="form-control" />*@
+                                    <label class="form-label" for="form3Example2">Last name</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            @Html.TextBoxFor(d => d.Email, new { @id = "form3Example3", @class = "form-control", type = "email", @required = true })
+                            @*<input type="email" id="form3Example3" class="form-control" />*@
+                            <label class="form-label" for="form3Example3">Email address</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            @Html.TextAreaFor(d => d.Comment, new { @id = "form3Example4", @class = "form-control", @rows = "5", @required = true })
+                            @*<textarea rows="5" id="form3Example4" class="form-control" required></textarea>*@
+                            <label class="form-label" for="form3Example4">Comment</label>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-4" id="payhere-payment">Send</button>
+                    }
+                    <!-- 2 column grid layout with text inputs for the first and last names -->
+
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<!--Main layout-->

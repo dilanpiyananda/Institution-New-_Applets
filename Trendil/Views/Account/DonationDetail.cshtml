@@ -1,0 +1,131 @@
+﻿@using Trendil.Models
+@model DonationVM
+@{
+    ViewBag.Title = "Donation Detail";
+    string imagePath = "/Content/Image/Upload/DepositSlip/" + Model.UploadFileName;
+    string notApplied = "N/A";
+
+}
+
+<main class="mt-5">
+    <div class="container">
+        <section>
+            <div class="row">
+                <h4 class="f-18 text-center">
+                    <strong>Donation Detail</strong>
+
+                </h4>
+                <p class="text-muted text-center f-14 text-align-justify">
+                    <a href="@Url.Action("Donations","Account")">Go to Donation Page</a>
+                </p>
+                <hr /><br />
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-4 gx-5 mb-4 mt-3">
+                    <div class="bg-image hover-overlay ripple shadow-2-strong d-flex align-items-center justify-content-center" data-mdb-ripple-color="light">
+                        <img src="@imagePath" class="img-fluid" alt="tendril"/>
+                        <a>
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 gx-5 mb-4">
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p style="background: #dee14f; color: white; padding: 3px; align: center; text-align: center;" class="f-14">
+                                First Name :
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="background: #bfc23c; color: white; padding: 3px; align: center; text-align: center;" class="f-14">
+                                @Model.FirstName
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="background: #dee14f; color: white; padding: 3px; align: center; text-align: center;" class="f-14">
+                                Last Name :
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="background: #bfc23c; color: white; padding: 3px; align: center; text-align: center;" class="f-14">
+                                @if (@Model.LastName == null || Model.LastName == "") 
+                                {
+                                    @notApplied
+                                } else { 
+                                    @Model.LastName
+                                }
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="background: #dee14f; color: white; padding: 3px; align: center; text-align: center;" class="f-14">
+                                Country :
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="background: #bfc23c; color: white; padding: 3px; align: center; text-align: center;" class="f-14">
+                                @if (@Model.Country == null || Model.Country == "")
+                                {
+                                    @notApplied
+                                }
+                                else
+                                {
+                                    @Model.Country
+                                }
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="background: #dee14f; color: white; padding: 3px; align: center; text-align: center;" class="f-14">
+                                Mobile :
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="background: #bfc23c; color: white; padding: 3px; align: center; text-align: center;" class="f-14">
+                                @if (@Model.Mobile == null || Model.Mobile == "")
+                                {
+                                    @notApplied
+                                }
+                                else
+                                {
+                                    @Model.Mobile
+                                }
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="background: #dee14f; color: white; padding: 3px; align: center; text-align: center;" class="f-14">
+                                Email :
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="background: #bfc23c; color: white; padding: 3px; align: center; text-align: center;" class="f-14">
+                                @if (@Model.Email == null || Model.Email == "")
+                                {
+                                    @notApplied
+                                }
+                                else
+                                {
+                                    @Model.Email
+                                }
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="background: #dee14f; color: white; padding: 3px; align: center; text-align: center;" class="f-14">
+                                Slip Deposit Date :
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="background: #bfc23c; color: white; padding: 3px; align: center; text-align: center;" class="f-14">
+                                @Model.CreateDate
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </section>
+    </div>
+</main>
+<!--Main layout-->

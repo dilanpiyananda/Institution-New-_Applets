@@ -1,0 +1,142 @@
+﻿@model List<Institute.DataAccess.Domain.TimeTableDTO>
+@{
+    ViewBag.Title = "Canceled";
+    List<IGrouping<string, Institute.DataAccess.Domain.TimeTableDTO>> grpTeachers = null;
+    if (Model != null && Model.Count() > 0)
+    {
+        grpTeachers = Model.GroupBy(d => d.EmpolyeeId).ToList();
+    }
+
+}
+
+<header>
+    <!-- Carousel wrapper -->
+    <div id="introCarouselOurTeam" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
+        </ol>
+
+        <!-- Inner -->
+        <div class="carousel-inner">
+            <!-- Single item -->
+            <div class="carousel-item-our-team active">
+                <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="text-white text-center">
+                            <h1 class="mb-3 capital-text">Canceled Time Table</h1>
+                            <h5 class="mb-4">Noble Education</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single item -->
+        </div>
+        <!-- Inner -->
+    </div>
+    <!-- Carousel wrapper -->
+</header>
+<main class="mt-5">
+    <div class="container">
+        <!--Section: Content-->
+        <section  style="background-color: #f4f5f7;">
+            <div class="container py-5 h-100">
+                <div class="row d-flex  align-items-center h-100">
+
+                    @if (Model != null && Model.Count() > 0)
+                    {
+                        foreach (var teacher in grpTeachers)
+                        {
+                            string base64String = Convert.ToBase64String(teacher.FirstOrDefault().TeacherImage);
+                            // Construct data URI
+                            string imageSrc = $"data:image/jpeg;base64,{base64String}";
+                            var teachersubjects = teacher.GroupBy(d => d.Subject).ToList();
+                            foreach (var singleTeacherSubject in teachersubjects)
+                            {
+                                <div class="col col-lg-6 mb-4 mb-lg-0">
+                                    <div class="card mb-3" style="border-radius: .5rem;">
+                                        <div class="row g-0">
+                                            <div class="col-md-4 gradient-custom text-center text-white"
+                                                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                                                <img src="@imageSrc"
+                                                     alt="Avatar" class="rounded-circle img-fluid my-5" style="width: 80px;" />
+                                                <h5>@teacher.FirstOrDefault().Teacher</h5>
+                                                <h3>@singleTeacherSubject.Key</h3>
+                                                <i class="far fa-edit mb-5"></i>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body p-4">
+                                                    <h6>Canceled Time</h6>
+                                                    <hr class="mt-0 mb-4">
+                                                    <div class="row pt-1">
+                                                        @foreach (var gradeclass in singleTeacherSubject)
+                                                        {
+                                                            <div class="col-12 mb-3">
+                                                                <h6>@gradeclass.Class / @gradeclass.Subject</h6>
+                                                                <p class="text-muted">@(Convert.ToDateTime(gradeclass.Date).ToShortDateString()) &nbsp; @gradeclass.Time</p>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                    <hr />
+                                                    <div class="row align-items-center">
+
+                                                        <div class="col-sm-2 text-center">
+                                                            <button type="button" class="btn btn-outline-primary btn-floating">
+                                                                <i class="fas fa-phone"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-sm-10 text-left" style="text-align:left !important; color:#1266f1">
+                                                            @teacher.FirstOrDefault().TeacherObj.Tel
+                                                        </div>
+                                                    </div>
+                                                    <div class="row align-items-center mb-2 mt-1">
+
+                                                        <div class="col-sm-2 text-center">
+                                                            <button type="button" class="btn btn-outline-primary btn-floating">
+                                                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-sm-10 text-left  " style="text-align:left !important;color:#1266f1">
+                                                            @teacher.FirstOrDefault().TeacherObj.Email
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+
+                    }
+
+
+
+                </div>
+            </div>
+        </section>
+        <!--Section: Content-->
+    </div>
+</main>
+
+
+<!--Main layout-->
+
+@*<div class="container">
+    <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span class="visually-hidden">Loading...</span>
+    </button>
+    <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+    </button>
+</div>*@
+
+
+    
+
+
+

@@ -1,0 +1,444 @@
+﻿@using Trendil.Models
+@model HomeVM
+@{ 
+    ViewBag.Title = "HOME";
+}
+<main style="position:absolute; z-index:2500">
+    <div class="container">
+        
+    </div>
+</main>
+ <header>
+    <!-- Carousel wrapper -->
+    <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
+            <li data-mdb-target="#introCarousel" data-mdb-slide-to="1"></li>
+            <li data-mdb-target="#introCarousel" data-mdb-slide-to="2"></li>
+            @*<li data-mdb-target="#introCarousel" data-mdb-slide-to="3"></li>
+            <li data-mdb-target="#introCarousel" data-mdb-slide-to="4"></li>
+            <li data-mdb-target="#introCarousel" data-mdb-slide-to="5"></li>
+            <li data-mdb-target="#introCarousel" data-mdb-slide-to="6"></li>
+            <li data-mdb-target="#introCarousel" data-mdb-slide-to="7"></li>
+            <li data-mdb-target="#introCarousel" data-mdb-slide-to="8"></li>
+            <li data-mdb-target="#introCarousel" data-mdb-slide-to="9"></li>*@
+
+        </ol>
+
+        <!-- Inner -->
+        <div class="carousel-inner">
+            <!-- Single item -->
+            <div class="carousel-item active">
+                <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="text-white text-center">
+                            <h1 class="mb-3 capital-text">My Event</h1>
+                            <h5 class="mb-4">Best Event In 2024 In my Institute</h5>
+                            @*<a class="btn btn-outline-light btn-lg m-2"
+                               href="@Url.Action("Donation","Home")"
+                               role="button"
+                               rel="nofollow"
+                               >DONATE NOW</a>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single item -->
+            <div class="carousel-item">
+                <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="text-white text-center">
+                            <h2 class="capital-text">Noble Education</h2>
+                            <h5 class="mb-4">Best Event In 2024 In my Institute</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="text-white text-center">
+                            <h2 class="capital-text">Noble Edu</h2>
+                            <h5 class="mb-4">Best Event In 2024/2025 In </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          
+        </div>
+        <!-- Inner -->
+        <!-- Controls -->
+        <a class="carousel-control-prev" href="#introCarousel" role="button" data-mdb-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#introCarousel" role="button" data-mdb-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- Carousel wrapper -->
+</header>
+    <main class="mt-5">
+        <div class="container">
+            <!--Section: Content-->
+            <!--<section>
+        <div class="row">
+            <div class="col-md-5 gx-5 mb-4 mt-lg-4">
+                <div class="bg-image hover-overlay ripple shadow-2-strong d-flex align-items-center justify-content-center" data-mdb-ripple-color="light">
+                    <img src="~/Content/Image/TrandilGate.jpg" class="img-fluid image-flex-size" alt="tendril"/>
+                    <img src="~/Content/Image/TrandilGate.jpg" class="img-fluid image-flex-size" alt="tendril"/>
+
+                    <a>
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-7 gx-5 mb-4">
+                <h4 class="f-18"><strong>Tendril Foundation</strong></h4>
+                <p class="text-muted f-14 text-align-justify">
+                    Tendril Foundation is a nonprofit organization aiming at environmental and species
+                    conservation, forest and habitat restoration, and provision of sustainable livelihoods. It was
+                    initiated in 2017. Our major objectives are to,
+                </p>
+                <ul class="text-muted f-14">
+                    <li>Connect with communities, women and children to protect the environment</li>
+                    <li>Restore forests and habitats in degraded lands</li>
+                    <li>Conserve forests, species, habitats and ecosystems</li>
+                    <li>
+                        Establish and network community-based organizations towards environmental
+                        protection and creation of sustainable livelihoods
+                    </li>
+                    <li>
+                        Introduce organic products of the communities to local and international market;
+                    </li>
+                    <li>
+                        Supporting children’s education through providing library facilities and other essential
+                        needs
+                    </li>
+                    <li>
+                        Train and aware communities on conservation and sustainability
+                    </li>
+                    <li>
+                        Introduce socially engaged art practices to communities
+                    </li>
+                    <li>
+                        Encourage people’s participation in local policy processes
+                    </li>
+                    <li>
+                        Engage in environmental research and surveys
+                    </li>
+                    <li>
+                        Facilitate environmental researchers
+                    </li>
+                    <li>
+                        Publish research findings
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>-->
+            <!--Section: Content-->
+            <!--<hr class="my-5" />-->
+            <!--Section: Content-->
+            <section class="text-center">
+                <h4 class="mb-5 " style="font-size:30px;"><strong>Facilities For You </strong></h4>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-12 mb-4 d-flex">
+                        <div class="card">
+                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                <img src="~/Content/Image/facility/closeup-cctv-camera-wall.jpg" style="height:200px !important" class="img-fluid" alt="tendril" />
+                                <a href="#!">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title f-16">CCTV</h5>
+                                @*<p class="card-text f-14 text-align-justify">
+                                Tendril Foundation conducts environmental and policy research and surveys in various areas in
+                                Sri Lanka. The findings are presented in local and international conferences and published in
+                                journals.
+                            </p>*@
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mb-4 d-flex">
+                        <div class="card">
+                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                <img src="~/Content/Image/facility/close-up-heat-pump-outside-home.jpg" style="height:200px !important" class="img-fluid" alt="tendril" />
+                                <a href="#!">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title f-16">AC ROOMS</h5>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mb-4 d-flex">
+                        <div class="card">
+                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                <img src="~/Content/Image/facility/43344.jpg" style="height:200px !important" class="img-fluid" alt="tendril" />
+                                <a href="#!">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title f-16">
+                                    FIRST AID BOX
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mb-4 d-flex">
+                        <div class="card">
+                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                <img src="~/Content/Image/facility/2477889.jpg" style="height:200px !important" class="img-fluid" alt="tendril" />
+                                <a href="#!">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title f-16">
+                                    FREE WIFI
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--Section: Content-->
+
+            <hr class="my-5" />
+
+            <!--Section: Content-->
+            <section>
+                <div class="row">
+                    <div class="col-md-4 gx-5 mb-4">
+                        <div class="bg-image hover-overlay ripple shadow-2-strong" data-mdb-ripple-color="light">
+                            <img src="~/Content/Image/facility/vissionmission.jpg" class="img-fluid" alt="tendril" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-3 gx-5 mb-4 text-center">
+                        <h4 style="font-size:30px;"><strong>VISION</strong></h4>
+                        <p class="text-muted f-14">
+                            To be a leading institution dedicated to fostering academic excellence, innovation, and social responsibility
+                        </p>
+
+                    </div>
+                    <div class="col-md-4 gx-5 mb-4 text-center">
+                        <h4 style="font-size:30px;"><strong>MISSION</strong></h4>
+                        <p class="text-muted f-14">
+                            Our mission is to provide a transformative educational experience that empowers students to realize their full
+                            potential, instills a passion for lifelong learning, and cultivates leaders who contribute positively to their
+                            communities and the world.
+                        </p>
+
+                    </div>
+                </div>
+
+            </section>
+            <!--Section: Content-->
+            <hr class="my-5" />
+
+            <!--Section: Content-->
+            <section class="text-center">
+                <h4 class="mb-5" style="font-size:30px;"><strong>Our Teachers</strong></h4>
+
+                <section style="background-color: #eee;">
+                    <div class="container-fluid py-5 h-100">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                            @if (Model.Teachers != null && Model.Teachers.Count() > 0)
+                            {
+                                foreach (var a in Model.Teachers)
+                                {
+                                    string base64String = Convert.ToBase64String(a.Image);
+                                    // Construct data URI
+                                    string imageSrc = $"data:image/jpeg;base64,{base64String}";
+
+                <div class="col-md-3 col-xl-3">
+
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body text-center">
+                            <div class="mt-3 mb-4">
+                                <img src="@imageSrc"
+                                     class="rounded-circle img-fluid" style="width: 100px;" />
+                            </div>
+                            <h6 class="mb-2">@a.TeacherName</h6>
+                            <p class="text-muted mb-4">
+                                Teacher <span class="mx-2"></span>
+                            </p>
+                            <hr />
+                            <div class="row align-items-center">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2 text-center">
+                                    <button type="button" class="btn btn-outline-primary btn-floating">
+                                        <i class="fas fa-phone fa-lg"></i>
+                                    </button>
+                                </div>
+                                <div class="col-sm-8 text-left" style="text-align:left !important; color:#1266f1">
+                                    @a.Tel
+                                </div>
+                            </div>
+                            <div class="row align-items-center mb-2 mt-1">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2 text-center">
+                                    <button type="button" class="btn btn-outline-primary btn-floating">
+                                        <i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                                <div class="col-sm-8 text-left  " style="text-align:left !important;color:#1266f1">
+                                    @a.Email
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>}
+
+        }
+
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <!--Section: Content-->
+
+            <hr class="my-5" />
+            <section class="text-center">
+                <h4 class="mb-5" style="font-size:30px"><strong>Available Classes</strong></h4>
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="card text-bg-secondary mb-3" style="max-width: 18rem; background:#95c4d4">
+                            <div class="card-body">
+                                <h5 class="card-title">A/L Maths</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card text-bg-secondary mb-3" style="max-width: 18rem; background:#a3d4ae">
+                            <div class="card-body">
+                                <h5 class="card-title">A/L  Physics</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card text-bg-secondary mb-3" style="max-width: 18rem; background:#95c4d4">
+                            <div class="card-body">
+                                <h5 class="card-title">A/L Art</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card text-bg-secondary mb-3" style="max-width: 18rem; background:#a3d4ae">
+                            <div class="card-body">
+                                <h5 class="card-title">A/L Commerce</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="card text-bg-secondary mb-3" style="max-width: 18rem; background:#95c4d4">
+                            <div class="card-body">
+                                <h5 class="card-title"> Maths</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card text-bg-secondary mb-3" style="max-width: 18rem; background:#a3d4ae">
+                            <div class="card-body">
+                                <h5 class="card-title">Music</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card text-bg-secondary mb-3" style="max-width: 18rem; background:#95c4d4">
+                            <div class="card-body">
+                                <h5 class="card-title">English</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card text-bg-secondary mb-3" style="max-width: 18rem; background:#a3d4ae">
+                            <div class="card-body">
+                                <h5 class="card-title">Science</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <hr class="my-5" />
+            <!--Section: Content-->
+            @if (Model.TimeTables != null && Model.TimeTables.Count() > 0)
+            {
+                <section class="text-center">
+                    <h4 class="mb-5 f-18"><strong>Class Time Tables</strong></h4>
+
+                    <div class="row">
+                        @foreach (var teacher in Model.TimeTables)
+                        {
+                            string base64String = Convert.ToBase64String(teacher.TeacherImage);
+                            // Construct data URI
+                            string imageSrc = $"data:image/jpeg;base64,{base64String}";
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <img src="@imageSrc" class="card-img-top" alt="Hollywood Sign on The Hill" />
+                                    <div class="card-body">
+                                        <h5 class="card-title">@teacher.Teacher</h5>
+                                        <h6 class="card-title">@teacher.Subject / @teacher.Class</h6>
+                                        <p class="card-text">
+                                            @(Convert.ToDateTime(teacher.Date).ToShortDateString()) &nbsp; / &nbsp; @teacher.Time
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+
+                </section>            }
+
+            <!--Section: Content-->
+            @*<hr class="my-5" />*@
+
+            <!--Section: Content-->
+            @*<section class="mb-5" id="donateNowDev">
+            @Html.Action("DonateNow", "Home")
+        </section>*@
+            <!--Section: Content-->
+
+        </div>
+    </main>
+    <!--Main layout-->
+<script>
+    function focusDev(id) {
+        document.getElementById(id).focus();
+    }
+</script>

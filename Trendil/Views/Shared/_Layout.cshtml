@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta name="title" content="Noble Education">
+    <meta name="description" content="Noble education in sri lanka ">
+    <meta name="keywords" content="Noble education in sri lanka">
+    @*<meta name="robots" content="noindex, nofollow">*@
+
+    <meta name="language" content="English">
+    <meta name="author" content="Noble education">
+
+    <title>@ViewBag.Title - Noble-Edu</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <!-- MDB -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8R2638934L"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-8R2638934L');
+    </script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/mdb.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"></link>
+    @Styles.Render("~/Content/commoncss")
+
+</head>
+
+
+
+<body>
+    <header>
+        <!--nex nav bar-->
+        <!-- Navbar -->
+        <div>
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-dark" id="navigationbartrendil" style="z-index: 10; background: #131b1a!important">
+                <!-- Container wrapper -->
+                <div class="container-fluid">
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand" href="@Url.Action("Index","Home")">
+                        <img src="~/Content/Image/logonobel.png" alt="Noble Education Logo" style="height: 40px; margin-right: 10px;">
+                        <b><span style="color: #2557a5d6">Noble</span> <span style="color: #74b4c9;">Education</span></b>
+                    </a>
+
+                    <!-- Toggle button -->
+                    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                            data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <!-- Collapsible wrapper -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Left links -->
+                        <ul class="navbar-nav me-3">
+                            <li class="nav-item" style="color:black !important">
+                                <a class="nav-link active capital-text f-13" aria-current="page" href="@Url.Action("Index","Home")">
+                                    Home
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav me-3">
+                            <li class="nav-item">
+                                <a class="nav-link capital-text f-13" href="@Url.Action("OurTeachers","Home")">
+                                    Our Teachers
+                                </a>
+                            </li>
+                        </ul>
+                        @*<ul class="navbar-nav me-3">
+            <li class="nav-item">
+                <a class="nav-link capital-text f-13" href="@Url.Action("Classes","Home")">
+                    Classes
+                </a>
+            </li>
+        </ul>*@
+                        <ul class="navbar-nav me-3">
+                            <li class="nav-item">
+                                <a class="nav-link capital-text f-13" href="@Url.Action("Scheduled","Home")">
+                                    Scheduled
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav me-3">
+                            <li class="nav-item">
+                                <a class="nav-link capital-text f-13" href="@Url.Action("Canceled","Home")">
+                                    Canceled
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav me-3">
+                            <li class="nav-item">
+                                <a class="nav-link capital-text f-13" href="@Url.Action("Events","Home")">
+                                    Events
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Right links -->
+                        <!-- Search form -->
+                        <!--<form class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0">
+        <a class="btn btn-outline-light btn-sm m-2"
+        href="@Url.Action("Donation","Home")"
+        role="button"
+        rel="nofollow">DONATE NOW</a>
+    </form>-->
+                    </div>
+                    <!-- Collapsible wrapper -->
+                </div>
+                <!-- Container wrapper -->
+            </nav>
+
+            <!-- Navbar -->
+        </div>
+
+        <!-- Navbar -->
+        <style>
+            .navbar-dark .nav-item .nav-link {
+                color: #fff;
+            }
+
+                .navbar-dark .nav-item .nav-link:hover {
+                    background-color: rgba(255, 255, 255, 0.1);
+                    transition: all 0.3s ease;
+                    border-radius: 0.25rem;
+                    color: #fff;
+                }
+
+            .fa-li {
+                position: relative;
+                left: 0;
+            }
+        </style>
+    </header>
+    <!--Main Navigation-->
+    <!--Main layout-->
+    @RenderBody()
+
+    <!--Main layout-->
+    <!--Footer-->
+    <footer class="footer-light text-lg-start">
+        <div class="container">
+            <div class="row">
+                <div class="text-center py-4 align-items-center">
+                    <p style="font-size:30px"><b><span style="color: #2557a5d6">Noble</span> <span style="color: #74b4c9;">Education</span></b></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4 ">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15844.716479357547!2d79.8617565!3d6.8691285!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25bbaf6b59923%3A0x71feb348a7764763!2sNoble%20Academy%20Wellawatte!5e0!3m2!1sen!2slk!4v1709369441634!5m2!1sen!2slk" width="100%" height="250px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col-sm-4" style="text-align: center;">
+                    <img src="~/Content/Image/logonobel.png" style="width:50%; display: inline-block;" />
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4 ">
+                    <p class="f-15"><strong>Institute</strong></p>
+                    <p class="f-13">
+                        23,Ramakrishna Road, Wellawatta, Colombo-06.
+                        <br />
+                        Phone: +94711455654
+                        <br />
+                        Email: info@nobledu.com
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <!--<hr class="m-0" />
+
+        <div class="text-center py-4 align-items-center">
+            <p>Tendril Foundation</p>
+        </div>-->
+
+        <div class="text-center p-3 f-13" style="background-color: black; color:white">
+            © 2024 Copyright:
+            <a class="" href="#" style="color:white"></a>
+        </div>
+
+    </footer>
+    <!--Footer-->
+    <!-- MDB -->
+    @Scripts.Render("~/bundles/commonjs")
+    @*@Scripts.Render("~/bundles/jquery")*@
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+

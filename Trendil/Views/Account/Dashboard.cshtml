@@ -1,0 +1,48 @@
+﻿@using Trendil.Models
+@model LoginVM
+@{
+    ViewBag.Title = "Dashbord";
+}
+
+<main class="mt-5">
+    <div class="container">
+        <section>
+            <div class="row">
+                <div class="col-md-3 gx-5 mb-4">
+
+                </div>
+
+                <div class="col-md-6 gx-5 mb-4">
+                    <h4 class="f-18 text-center"><strong>Menu</strong></h4>
+                    <p class="text-muted text-center f-14 text-align-justify">
+                        Select Menu
+                    </p>
+                    <hr />
+                    <br />
+                    
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <i class="fa fa-address-book" aria-hidden="true" style="font-size:55px; color:cornflowerblue"></i>
+                            <hr />
+                            <a href="@Url.Action("ContactUs","Account")" class="btn btn-primary btn-block mb-4" id="payhere-payment">Contact Us</a>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <i class='fas fa-coins' style="font-size:55px; color:yellow"></i>
+                            <hr />
+                            <a href="@Url.Action("Donations","Account")" class="btn btn-warning btn-block mb-4" id="payhere-payment">Donation</a>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <i class="fa fa-chevron-circle-left" style="font-size:55px; color:forestgreen"></i>
+                            <hr />
+                            <a href="@Url.Action("LogOut","Account")" class="btn btn-success btn-block mb-4" id="payhere-payment">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 gx-5 mb-4">
+
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<!--Main layout-->

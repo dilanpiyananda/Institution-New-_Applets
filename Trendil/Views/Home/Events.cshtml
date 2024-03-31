@@ -1,0 +1,89 @@
+﻿@model List<Institute.DataAccess.Domain.EventDTO>
+@{
+    ViewBag.Title = "Events";
+}
+
+<header>
+    <!-- Carousel wrapper -->
+    <div id="introCarouselOurTeam" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
+        </ol>
+
+        <!-- Inner -->
+        <div class="carousel-inner">
+            <!-- Single item -->
+            <div class="carousel-item-our-team active">
+                <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="text-white text-center">
+                            <h1 class="mb-3 capital-text">Events</h1>
+                            <h5 class="mb-4">Noble Education</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single item -->
+        </div>
+        <!-- Inner -->
+    </div>
+    <!-- Carousel wrapper -->
+</header>
+<main class="mt-5">
+    <div class="container">
+        <!--Section: Content-->
+        <section class="text-center">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                @if (Model != null && Model.Count() > 0)
+                {
+                    foreach (var a in Model)
+                    {
+                        string base64String = Convert.ToBase64String(a.Image);
+                        // Construct data URI
+                        string imageSrc = $"data:image/jpeg;base64,{base64String}";
+
+                <div class="col-lg-3 col-md-12 mb-4 d-flex">
+                    <div class="card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="@imageSrc" style="height:200px !important" class="img-fluid" alt="noble" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        @*<div class="card-body">
+                            <h5 class="card-title f-16">CCTV</h5>
+                        </div>*@
+                    </div>
+                </div>
+                    }
+
+                }
+
+
+            </div>
+        </section>
+        <!--Section: Content-->
+    </div>
+</main>
+
+
+<!--Main layout-->
+
+@*<div class="container">
+    <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span class="visually-hidden">Loading...</span>
+    </button>
+    <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+    </button>
+</div>*@
+
+
+    
+
+
+

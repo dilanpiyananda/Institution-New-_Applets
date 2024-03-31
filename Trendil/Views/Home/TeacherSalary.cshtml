@@ -1,0 +1,271 @@
+﻿@model Institute.DataAccess.Domain.TeacherPaymentDTO
+@{
+    ViewBag.Title = "Teacher Salary";
+    string imageSrc = null;
+    if (Model != null && Model.TeacherImage != null)
+    {
+        string base64String = Convert.ToBase64String(Model.TeacherImage);
+        // Construct data URI
+        imageSrc = $"data:image/jpeg;base64,{base64String}";
+    }
+
+}
+<header>
+    <!-- Carousel wrapper -->
+    <div id="introCarouselOurSalary" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
+        </ol>
+
+        <!-- Inner -->
+        <div class="carousel-inner">
+            <!-- Single item -->
+            <div class="carousel-item-our-salary active">
+                <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="text-white text-center">
+                            <h1 class="mb-3 capital-text">Salary Information</h1>
+                            <h5 class="mb-4">Noble Education</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single item -->
+        </div>
+        <!-- Inner -->
+    </div>
+    <!-- Carousel wrapper -->
+</header>
+
+@if (Model != null && Model.TeacherId != null)
+{
+    <section style="background-color: #eee;">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col">
+                    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="@Url.Action("index","Home")">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">@Model.TeacherName</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <img src="@imageSrc" alt="avatar"
+                                 class="rounded-circle img-fluid" style="width: 150px;">
+                            <h5 class="my-3">@Model.TeacherName</h5>
+                            @*<p class="text-muted mb-1">Full Stack Developer</p>
+                                <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                                <div class="d-flex justify-content-center mb-2">
+                                    <button type="button" class="btn btn-primary">Follow</button>
+                                    <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Month</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0"> @DateTime.Now.ToString("MMMM") </p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Earning</p>
+                                </div>
+                                <div class="col-sm-7">
+                                    <p class="text-muted mb-0">LKR @Model.TeacherEarning.ToString("0.00")</p>
+                                </div>
+                                <div class="col-sm-2">
+                                    @if (Model.TeacherEarning > 0)
+                                    {
+                                        <i class="fa fa-info-circle" style="color:red" aria-hidden="true" onclick="staticTeacherEarningModal()"></i>
+                                    }
+
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Advanced</p>
+                                </div>
+                                <div class="col-sm-7">
+                                    <p class="text-muted mb-0">LKR  @Model.Advnaced.ToString("0.00")</p>
+                                </div>
+                                <div class="col-sm-2">
+                                    @if (@Model.Advnaced > 0)
+                                    {
+                                        <i class="fa fa-info-circle" style="color:red" aria-hidden="true" onclick="staticAdvancedEarningModal()"></i>
+                                    }
+
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">OD</p>
+                                </div>
+                                <div class="col-sm-7">
+                                    <p class="text-muted mb-0">LKR  @Model.ODAmount.ToString("0.00")</p>
+                                </div>
+
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0"><b>Payble</b></p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0"><b>LKR  @Model.Total.ToString("0.00")</b></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+
+
+<!-- Modal -->
+<div class="modal fade " id="teacherearningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Monthly Earning Details</h5>
+                <button type="button" class="close" onclick="staticTeacherEarningModalColse()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Teacher Code</th>
+                            <th scope="col">Enrolment Id</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.EmployeepaymentSummary != null && Model.EmployeepaymentSummary.Count() > 0)
+                        {
+                            foreach (var a in Model.EmployeepaymentSummary)
+                            {
+                                <tr>
+                                    <th scope="row">@a.Code</th>
+                                    <td>@a.EnrollementId</td>
+                                    <td>@(a.Date?.ToString("yyyy-MM-dd"))</td>
+                                    <td>LKR @(a.TeacherAmount?.ToString("0.00"))</td>
+                                </tr>
+                            }
+
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="staticTeacherEarningModalColse()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade " id="teacherAdvancedDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Salary Advanced Details</h5>
+                <button type="button" class="close" onclick="staticAdvancedEarningModalHide()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Reference</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.TeacherAdvancedTransaction != null && Model.TeacherAdvancedTransaction.Count() > 0)
+                        {
+                            foreach (var a in Model.TeacherAdvancedTransaction)
+                            {
+                                <tr>
+                                    <th scope="row">@a.Reference</th>
+                                    <td>@(a.PaidDate?.ToString("yyyy-MM-dd"))</td>
+                                    <td>LKR @a.Amount</td>
+                                </tr>
+                            }
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="staticAdvancedEarningModalHide()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function staticTeacherEarningModal() {
+        $("#teacherearningModal").modal('show');
+        $("#teacherearningModal").removeClass("model-class-display-none").addClass("model-class-display-show");
+    }
+
+    function staticTeacherEarningModalColse() {
+        $("#teacherearningModal").modal('hide');
+        $("#teacherearningModal").addClass("model-class-display-none").removeClass("model-class-display-show");
+    }
+    function redirectoteacherhide() {
+        $("#teacherearningModal").hide();
+    }
+    function staticAdvancedEarningModal() {
+        $("#teacherAdvancedDetail").modal('show');
+        $("#teacherAdvancedDetail").removeClass("model-class-display-none").addClass("model-class-display-show");
+    }
+
+    function staticAdvancedEarningModalHide() {
+
+        $("#teacherAdvancedDetail").modal('hide');
+        $("#teacherAdvancedDetail").addClass("model-class-display-none").removeClass("model-class-display-show");
+    }
+</script>
+
+<style>
+    .model-class-display-show{
+        display:block !important;
+    }
+
+    .model-class-display-none {
+        display: none !important;
+    }
+</style>

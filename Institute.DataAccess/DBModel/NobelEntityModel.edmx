@@ -1,0 +1,2155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="nobleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="BillID" />
+          </Key>
+          <Property Name="BillID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Dates" Type="date" />
+          <Property Name="StudentID" Type="nvarchar" MaxLength="10" />
+          <Property Name="InstituteID" Type="nvarchar" MaxLength="10" />
+          <Property Name="Cash" Type="money" />
+          <Property Name="TotalAmount" Type="money" />
+          <Property Name="Dues" Type="money" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateByUser" Type="int" />
+          <Property Name="MachineId" Type="smallint" />
+          <Property Name="DueDate" Type="date" />
+          <Property Name="Discount" Type="money" />
+          <Property Name="PayMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreditCard" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="OffFees" Type="money" />
+          <Property Name="Month" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cancel_timetable">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Teacher" Type="nvarchar" MaxLength="50" />
+          <Property Name="Class" Type="nvarchar" MaxLength="50" />
+          <Property Name="subject" Type="nvarchar" MaxLength="50" />
+          <Property Name="updated_date" Type="date" />
+          <Property Name="date" Type="date" />
+          <Property Name="time" Type="nvarchar" MaxLength="50" />
+          <Property Name="years" Type="nvarchar" MaxLength="50" />
+          <Property Name="months" Type="nvarchar" MaxLength="50" />
+          <Property Name="days" Type="nvarchar" MaxLength="50" />
+          <Property Name="employee" Type="nvarchar" MaxLength="50" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'noble.dbo.CardTemplate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CardTemplate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassID" Type="nvarchar" MaxLength="4" />
+          <Property Name="Sub1" Type="nvarchar" MaxLength="5" />
+          <Property Name="Sub2" Type="nvarchar" MaxLength="5" />
+          <Property Name="Sub3" Type="nvarchar" MaxLength="5" />
+          <Property Name="Sub4" Type="nvarchar" MaxLength="5" />
+          <Property Name="Sub5" Type="nvarchar" MaxLength="5" />
+          <Property Name="Sub6" Type="nvarchar" MaxLength="5" />
+          <Property Name="Sub7" Type="nvarchar" MaxLength="5" />
+          <Property Name="Sub8" Type="nvarchar" MaxLength="5" />
+          <Property Name="Sub9" Type="nvarchar" MaxLength="5" />
+          <Property Name="fSize" Type="smallint" />
+          <Property Name="leftIndent" Type="smallint" />
+          <Property Name="TopIndent" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassID" Type="nvarchar" MaxLength="5" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Year" Type="smallint" />
+          <Property Name="RegistrationFee" Type="money" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateByUser" Type="int" />
+          <Property Name="UpdateDate" Type="date" />
+        </EntityType>
+        <EntityType Name="ClassSubject">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassSubjectID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClassID" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubjectID" Type="nvarchar" MaxLength="50" />
+          <Property Name="TeacherId" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubjectFee" Type="money" />
+          <Property Name="Note" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateByUser" Type="int" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="InstituteID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassType">
+          <Key>
+            <PropertyRef Name="ClassTypeId" />
+          </Key>
+          <Property Name="ClassTypeId" Type="smallint" Nullable="false" />
+          <Property Name="ClassType" Type="nvarchar" MaxLength="25" />
+          <Property Name="ClassTypeNickName" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="DailySummery">
+          <Key>
+            <PropertyRef Name="DailySummeryId" />
+          </Key>
+          <Property Name="DailySummeryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SummeryDate" Type="datetime" />
+          <Property Name="CashInHand" Type="money" />
+          <Property Name="SubjectFeeThisMonth" Type="money" />
+          <Property Name="SubjectFeePrevious" Type="money" />
+          <Property Name="MaintenanceFee" Type="money" />
+          <Property Name="AddminFee" Type="money" />
+          <Property Name="OtherCollection" Type="money" />
+          <Property Name="TeacherSalary" Type="money" />
+          <Property Name="OthersSalary" Type="money" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ErrorNote" Type="nvarchar" MaxLength="255" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="ComputerId" Type="smallint" />
+          <Property Name="StudentAdvance" Type="money" />
+          <Property Name="UsedAdvance" Type="money" />
+          <Property Name="Discount" Type="money" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DefaultValue">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PerOfTeacherPay" Type="real" />
+          <Property Name="MaitanenceFee" Type="money" />
+          <Property Name="Company" Type="nvarchar" MaxLength="50" />
+          <Property Name="OwenerId" Type="nvarchar" MaxLength="255" />
+          <Property Name="MachineId" Type="smallint" />
+          <Property Name="MachineName" Type="nvarchar" MaxLength="10" />
+          <Property Name="Balance" Type="money" />
+          <Property Name="fontSize" Type="smallint" />
+          <Property Name="LastProcessedDate" Type="datetime" />
+          <Property Name="LastWorkedDate" Type="datetime" />
+          <Property Name="SummeryPrintedDate" Type="datetime" />
+          <Property Name="IsOpened" Type="bit" Nullable="false" />
+          <Property Name="ReportDate" Type="datetime" />
+          <Property Name="HasNewTransaction" Type="bit" Nullable="false" />
+          <Property Name="OwnerEmail" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="JobCatergoryCode" Type="int" />
+          <Property Name="IsFullTime" Type="bit" Nullable="false" />
+          <Property Name="IdentificationType" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdentificationNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="AddressLine" Type="nvarchar(max)" />
+          <Property Name="TelephoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateByUser" Type="int" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstituteID" Type="nvarchar" MaxLength="11" />
+          <Property Name="Pic" Type="image" />
+          <Property Name="BasicSalary" Type="money" />
+          <Property Name="Username" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LoginStatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EnrollmentIDS">
+          <Key>
+            <PropertyRef Name="SysID" />
+          </Key>
+          <Property Name="SysID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnrollmentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstituteID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dates" Type="date" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Entities">
+          <Key>
+            <PropertyRef Name="EntityID" />
+          </Key>
+          <Property Name="EntityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contacts" Type="nvarchar(max)" />
+          <Property Name="Logo" Type="image" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Office" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Home" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'noble.dbo.Event' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ExpireDate" />
+            <PropertyRef Name="IsDeleted" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="image" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="ExpireDate" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpenseDetail">
+          <Key>
+            <PropertyRef Name="ExpenseDetailID" />
+          </Key>
+          <Property Name="ExpenseDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dates" Type="date" Nullable="false" />
+          <Property Name="ExpenseID" Type="int" Nullable="false" />
+          <Property Name="Account" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PayMode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="PaidAmount" Type="money" Nullable="false" />
+          <Property Name="Balance" Type="money" Nullable="false" />
+          <Property Name="PNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PayTo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Memo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExpenseFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" />
+          <Property Name="Descriptions" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Expenses">
+          <Key>
+            <PropertyRef Name="ExpenseID" />
+          </Key>
+          <Property Name="ExpenseID" Type="int" Nullable="false" />
+          <Property Name="Descriptions" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Deductible" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Favors">
+          <Key>
+            <PropertyRef Name="FavorID" />
+          </Key>
+          <Property Name="FavorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="IstituteID" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubjectCount" Type="int" />
+          <Property Name="Percentage" Type="float" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="House">
+          <Key>
+            <PropertyRef Name="HouseId" />
+          </Key>
+          <Property Name="HouseId" Type="smallint" Nullable="false" />
+          <Property Name="HouseName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Institute">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InstituteID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Indexx" Type="nvarchar" MaxLength="50" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'noble.dbo.JobTitle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="JobTitle">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="OD_Employees">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ODAmount" Type="money" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'noble.dbo.Paste Errors' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Paste Errors">
+          <Key>
+            <PropertyRef Name="IsSettled" />
+          </Key>
+          <Property Name="TransactionID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Customer" Type="nvarchar" MaxLength="255" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="255" />
+          <Property Name="ReferenceCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="BillID" Type="nvarchar" MaxLength="255" />
+          <Property Name="CategoryCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="IsSettled" Type="bit" Nullable="false" />
+          <Property Name="noOfItems" Type="smallint" />
+          <Property Name="Details" Type="nvarchar" MaxLength="255" />
+          <Property Name="PaymentDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'noble.dbo.PaymentCatergory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PaymentCatergory">
+          <Key>
+            <PropertyRef Name="Amount" />
+          </Key>
+          <Property Name="CategoryID" Type="nvarchar" MaxLength="4" />
+          <Property Name="Category" Type="nvarchar" MaxLength="30" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="SortOrder" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Stu_TempReg">
+          <Key>
+            <PropertyRef Name="TRID" />
+          </Key>
+          <Property Name="TRID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="StuMobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentsMobile" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="School" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentsID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Religion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Dates" Type="date" />
+          <Property Name="ReferenceCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar(max)" />
+          <Property Name="ParentJob" Type="nvarchar(max)" />
+          <Property Name="OldStudents" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdentificationType" Type="smallint" />
+          <Property Name="IdentificationNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="AddressLine" Type="nvarchar(max)" />
+          <Property Name="AddressLine1" Type="nvarchar(max)" />
+          <Property Name="StuMobile" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="ParentsMobile" Type="nvarchar" MaxLength="11" />
+          <Property Name="ParentsID" Type="nvarchar" MaxLength="11" />
+          <Property Name="School" Type="nvarchar" MaxLength="50" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateByUser" Type="int" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="HouseId" Type="smallint" />
+          <Property Name="emailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="MachineId" Type="smallint" />
+          <Property Name="InstituteID" Type="nvarchar" MaxLength="11" />
+          <Property Name="Religion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="image" />
+          <Property Name="OldStudent" Type="nvarchar(max)" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="Wishes" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Doc" Type="image" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentAttendance">
+          <Key>
+            <PropertyRef Name="Stu_EntryID" />
+          </Key>
+          <Property Name="Stu_EntryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstituteID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dates" Type="date" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClassSubjectID" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubjectID" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Month" Type="nchar" MaxLength="10" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentClass">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClassID" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateByUser" Type="int" />
+          <Property Name="MachineId" Type="smallint" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentDues">
+          <Key>
+            <PropertyRef Name="StudentDueID" />
+          </Key>
+          <Property Name="StudentDueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassSubjectID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClassID" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubjectID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Due" Type="money" />
+          <Property Name="Teacherid" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dates" Type="date" />
+          <Property Name="Month" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstituteID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentEnrollment">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EntrollmentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClassSubjectID" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegisteredDate" Type="datetime" />
+          <Property Name="PercentageOfFee" Type="real" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateByUser" Type="int" />
+          <Property Name="MachineId" Type="smallint" />
+          <Property Name="Teacherid" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstituteID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Checked" Type="bit" Nullable="false" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentIndenty">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateByUser" Type="int" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeacherPaymentSummery">
+          <Key>
+            <PropertyRef Name="TeacherSummeryId" />
+          </Key>
+          <Property Name="TeacherSummeryId" Type="int" Nullable="false" />
+          <Property Name="TeacherCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="SummeryDate" Type="date" />
+          <Property Name="ClassSubjectID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TeacherAmount" Type="money" />
+          <Property Name="StudentPayment" Type="money" />
+          <Property Name="NoOfStudent" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="UnitAmount" Type="money" />
+          <Property Name="ComputerId" Type="int" />
+          <Property Name="BillID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Month" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="InstituteID" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="EntrollmentID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Year" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teachers_Attendance">
+          <Key>
+            <PropertyRef Name="Tech_EntryID" />
+          </Key>
+          <Property Name="Tech_EntryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="nchar" MaxLength="10" />
+          <Property Name="Date" Type="nchar" MaxLength="10" />
+          <Property Name="Time" Type="nchar" MaxLength="10" />
+          <Property Name="Status" Type="nchar" MaxLength="10" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'noble.dbo.temp_EX_Student' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="temp_EX_Student">
+          <Key>
+            <PropertyRef Name="IsDeleted" />
+          </Key>
+          <Property Name="StudentID" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="30" />
+          <Property Name="IdentificationType" Type="int" />
+          <Property Name="IdentificationNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="AddressLine" Type="nvarchar" MaxLength="30" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="20" />
+          <Property Name="StuMobile" Type="nvarchar" MaxLength="11" />
+          <Property Name="ParentsMobile" Type="nvarchar" MaxLength="11" />
+          <Property Name="ParentsID" Type="nvarchar" MaxLength="11" />
+          <Property Name="School" Type="nvarchar" MaxLength="50" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateByUser" Type="int" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="HouseId" Type="int" />
+          <Property Name="emailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="MachineId" Type="int" />
+          <Property Name="InstituteID" Type="nvarchar" MaxLength="11" />
+          <Property Name="Religion" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tempLecturer">
+          <Key>
+            <PropertyRef Name="LectID" />
+          </Key>
+          <Property Name="LectID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Advance" Type="money" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'noble.dbo.tempStEnrolToDelete' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tempStEnrolToDelete">
+          <Key>
+            <PropertyRef Name="IsDeleted" />
+          </Key>
+          <Property Name="EntrollmentID" Type="nvarchar" MaxLength="10" />
+          <Property Name="StudentID" Type="nvarchar" MaxLength="10" />
+          <Property Name="ClassSubjectID" Type="nvarchar" MaxLength="6" />
+          <Property Name="RegisteredDate" Type="datetime" />
+          <Property Name="PercentageOfFee" Type="real" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateByUser" Type="int" />
+          <Property Name="MachineId" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'noble.dbo.tempStSubfee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tempStSubfee">
+          <Key>
+            <PropertyRef Name="IsSettled" />
+          </Key>
+          <Property Name="TransactionID" Type="nvarchar" MaxLength="10" />
+          <Property Name="Customer" Type="nvarchar" MaxLength="10" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="10" />
+          <Property Name="ReferenceCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="BillID" Type="nvarchar" MaxLength="10" />
+          <Property Name="CategoryCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="IsSettled" Type="bit" Nullable="false" />
+          <Property Name="noOfItems" Type="smallint" />
+          <Property Name="Details" Type="nvarchar" MaxLength="75" />
+          <Property Name="PaymentDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'noble.dbo.temptrans' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="temptrans">
+          <Key>
+            <PropertyRef Name="IsSettled" />
+            <PropertyRef Name="IsDeleted" />
+            <PropertyRef Name="IdT" />
+          </Key>
+          <Property Name="TransactionID" Type="nvarchar" MaxLength="10" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="10" />
+          <Property Name="ReferenceCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="BillID" Type="nvarchar" MaxLength="10" />
+          <Property Name="CategoryCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="noOfItems" Type="smallint" />
+          <Property Name="IsSettled" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateByUser" Type="int" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="IdT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MachineId" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'noble.dbo.trandToDelete' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="trandToDelete">
+          <Key>
+            <PropertyRef Name="IsSettled" />
+          </Key>
+          <Property Name="TransactionID" Type="nvarchar" MaxLength="10" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="10" />
+          <Property Name="ReferenceCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="BillID" Type="nvarchar" MaxLength="10" />
+          <Property Name="CategoryCode" Type="nvarchar" MaxLength="4" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="IsSettled" Type="bit" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Transactions">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionID" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeID" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstituteID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Reference" Type="nvarchar" MaxLength="50" />
+          <Property Name="BillID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="noOfItems" Type="smallint" />
+          <Property Name="IsSettled" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateByUser" Type="int" />
+          <Property Name="PaymentDate" Type="date" />
+          <Property Name="MachineId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sort" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Month" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EntrollmentID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransNote">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Details" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="nobleModelStoreContainer">
+          <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cancel_timetable" EntityType="Self.cancel_timetable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassSubject" EntityType="Self.ClassSubject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassType" EntityType="Self.ClassType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DailySummery" EntityType="Self.DailySummery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DefaultValue" EntityType="Self.DefaultValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EnrollmentIDS" EntityType="Self.EnrollmentIDS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Entities" EntityType="Self.Entities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpenseDetail" EntityType="Self.ExpenseDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expenses" EntityType="Self.Expenses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Favors" EntityType="Self.Favors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="House" EntityType="Self.House" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Institute" EntityType="Self.Institute" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OD_Employees" EntityType="Self.OD_Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stu_TempReg" EntityType="Self.Stu_TempReg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentAttendance" EntityType="Self.StudentAttendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentClass" EntityType="Self.StudentClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentDues" EntityType="Self.StudentDues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentEnrollment" EntityType="Self.StudentEnrollment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentIndenty" EntityType="Self.StudentIndenty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeacherPaymentSummery" EntityType="Self.TeacherPaymentSummery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teachers_Attendance" EntityType="Self.Teachers_Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tempLecturer" EntityType="Self.tempLecturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransNote" EntityType="Self.TransNote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CardTemplate" EntityType="Self.CardTemplate" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CardTemplate].[id] AS [id], 
+    [CardTemplate].[ClassID] AS [ClassID], 
+    [CardTemplate].[Sub1] AS [Sub1], 
+    [CardTemplate].[Sub2] AS [Sub2], 
+    [CardTemplate].[Sub3] AS [Sub3], 
+    [CardTemplate].[Sub4] AS [Sub4], 
+    [CardTemplate].[Sub5] AS [Sub5], 
+    [CardTemplate].[Sub6] AS [Sub6], 
+    [CardTemplate].[Sub7] AS [Sub7], 
+    [CardTemplate].[Sub8] AS [Sub8], 
+    [CardTemplate].[Sub9] AS [Sub9], 
+    [CardTemplate].[fSize] AS [fSize], 
+    [CardTemplate].[leftIndent] AS [leftIndent], 
+    [CardTemplate].[TopIndent] AS [TopIndent]
+    FROM [dbo].[CardTemplate] AS [CardTemplate]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Event" EntityType="Self.Event" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Event].[Id] AS [Id], 
+    [Event].[Image] AS [Image], 
+    [Event].[Title] AS [Title], 
+    [Event].[Description] AS [Description], 
+    [Event].[ExpireDate] AS [ExpireDate], 
+    [Event].[IsDeleted] AS [IsDeleted]
+    FROM [dbo].[Event] AS [Event]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="JobTitle" EntityType="Self.JobTitle" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [JobTitle].[JobId] AS [JobId], 
+    [JobTitle].[JobTitle] AS [JobTitle]
+    FROM [dbo].[JobTitle] AS [JobTitle]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Paste Errors" EntityType="Self.Paste Errors" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Paste Errors].[TransactionID] AS [TransactionID], 
+    [Paste Errors].[Customer] AS [Customer], 
+    [Paste Errors].[CustomerID] AS [CustomerID], 
+    [Paste Errors].[ReferenceCode] AS [ReferenceCode], 
+    [Paste Errors].[BillID] AS [BillID], 
+    [Paste Errors].[CategoryCode] AS [CategoryCode], 
+    [Paste Errors].[Date] AS [Date], 
+    [Paste Errors].[Amount] AS [Amount], 
+    [Paste Errors].[IsSettled] AS [IsSettled], 
+    [Paste Errors].[noOfItems] AS [noOfItems], 
+    [Paste Errors].[Details] AS [Details], 
+    [Paste Errors].[PaymentDate] AS [PaymentDate]
+    FROM [dbo].[Paste Errors] AS [Paste Errors]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PaymentCatergory" EntityType="Self.PaymentCatergory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PaymentCatergory].[CategoryID] AS [CategoryID], 
+    [PaymentCatergory].[Category] AS [Category], 
+    [PaymentCatergory].[Amount] AS [Amount], 
+    [PaymentCatergory].[SortOrder] AS [SortOrder]
+    FROM [dbo].[PaymentCatergory] AS [PaymentCatergory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="temp_EX_Student" EntityType="Self.temp_EX_Student" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [temp_EX_Student].[StudentID] AS [StudentID], 
+    [temp_EX_Student].[Name] AS [Name], 
+    [temp_EX_Student].[NickName] AS [NickName], 
+    [temp_EX_Student].[IdentificationType] AS [IdentificationType], 
+    [temp_EX_Student].[IdentificationNo] AS [IdentificationNo], 
+    [temp_EX_Student].[Sex] AS [Sex], 
+    [temp_EX_Student].[DOB] AS [DOB], 
+    [temp_EX_Student].[AddressLine] AS [AddressLine], 
+    [temp_EX_Student].[AddressLine1] AS [AddressLine1], 
+    [temp_EX_Student].[StuMobile] AS [StuMobile], 
+    [temp_EX_Student].[ParentsMobile] AS [ParentsMobile], 
+    [temp_EX_Student].[ParentsID] AS [ParentsID], 
+    [temp_EX_Student].[School] AS [School], 
+    [temp_EX_Student].[Grade] AS [Grade], 
+    [temp_EX_Student].[IsDeleted] AS [IsDeleted], 
+    [temp_EX_Student].[UpdateByUser] AS [UpdateByUser], 
+    [temp_EX_Student].[UpdateDate] AS [UpdateDate], 
+    [temp_EX_Student].[HouseId] AS [HouseId], 
+    [temp_EX_Student].[emailAddress] AS [emailAddress], 
+    [temp_EX_Student].[MachineId] AS [MachineId], 
+    [temp_EX_Student].[InstituteID] AS [InstituteID], 
+    [temp_EX_Student].[Religion] AS [Religion]
+    FROM [dbo].[temp_EX_Student] AS [temp_EX_Student]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tempStEnrolToDelete" EntityType="Self.tempStEnrolToDelete" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tempStEnrolToDelete].[EntrollmentID] AS [EntrollmentID], 
+    [tempStEnrolToDelete].[StudentID] AS [StudentID], 
+    [tempStEnrolToDelete].[ClassSubjectID] AS [ClassSubjectID], 
+    [tempStEnrolToDelete].[RegisteredDate] AS [RegisteredDate], 
+    [tempStEnrolToDelete].[PercentageOfFee] AS [PercentageOfFee], 
+    [tempStEnrolToDelete].[IsDeleted] AS [IsDeleted], 
+    [tempStEnrolToDelete].[UpdateByUser] AS [UpdateByUser], 
+    [tempStEnrolToDelete].[MachineId] AS [MachineId]
+    FROM [dbo].[tempStEnrolToDelete] AS [tempStEnrolToDelete]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tempStSubfee" EntityType="Self.tempStSubfee" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tempStSubfee].[TransactionID] AS [TransactionID], 
+    [tempStSubfee].[Customer] AS [Customer], 
+    [tempStSubfee].[CustomerID] AS [CustomerID], 
+    [tempStSubfee].[ReferenceCode] AS [ReferenceCode], 
+    [tempStSubfee].[BillID] AS [BillID], 
+    [tempStSubfee].[CategoryCode] AS [CategoryCode], 
+    [tempStSubfee].[Date] AS [Date], 
+    [tempStSubfee].[Amount] AS [Amount], 
+    [tempStSubfee].[IsSettled] AS [IsSettled], 
+    [tempStSubfee].[noOfItems] AS [noOfItems], 
+    [tempStSubfee].[Details] AS [Details], 
+    [tempStSubfee].[PaymentDate] AS [PaymentDate]
+    FROM [dbo].[tempStSubfee] AS [tempStSubfee]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="temptrans" EntityType="Self.temptrans" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [temptrans].[TransactionID] AS [TransactionID], 
+    [temptrans].[CustomerID] AS [CustomerID], 
+    [temptrans].[ReferenceCode] AS [ReferenceCode], 
+    [temptrans].[BillID] AS [BillID], 
+    [temptrans].[CategoryCode] AS [CategoryCode], 
+    [temptrans].[Date] AS [Date], 
+    [temptrans].[Amount] AS [Amount], 
+    [temptrans].[noOfItems] AS [noOfItems], 
+    [temptrans].[IsSettled] AS [IsSettled], 
+    [temptrans].[IsDeleted] AS [IsDeleted], 
+    [temptrans].[UpdateByUser] AS [UpdateByUser], 
+    [temptrans].[PaymentDate] AS [PaymentDate], 
+    [temptrans].[IdT] AS [IdT], 
+    [temptrans].[MachineId] AS [MachineId]
+    FROM [dbo].[temptrans] AS [temptrans]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="trandToDelete" EntityType="Self.trandToDelete" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [trandToDelete].[TransactionID] AS [TransactionID], 
+    [trandToDelete].[CustomerID] AS [CustomerID], 
+    [trandToDelete].[ReferenceCode] AS [ReferenceCode], 
+    [trandToDelete].[BillID] AS [BillID], 
+    [trandToDelete].[CategoryCode] AS [CategoryCode], 
+    [trandToDelete].[Amount] AS [Amount], 
+    [trandToDelete].[IsSettled] AS [IsSettled], 
+    [trandToDelete].[PaymentDate] AS [PaymentDate]
+    FROM [dbo].[trandToDelete] AS [trandToDelete]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="nobleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="BillID" />
+          </Key>
+          <Property Name="BillID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dates" Type="DateTime" Precision="0" />
+          <Property Name="StudentID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Cash" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Dues" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateByUser" Type="Int32" />
+          <Property Name="MachineId" Type="Int16" />
+          <Property Name="DueDate" Type="DateTime" Precision="0" />
+          <Property Name="Discount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PayMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreditCard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OffFees" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Month" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="Int16" />
+          <Property Name="RegistrationFee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateByUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="ClassSubject">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassSubjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectFee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateByUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="InstituteID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassType">
+          <Key>
+            <PropertyRef Name="ClassTypeId" />
+          </Key>
+          <Property Name="ClassTypeId" Type="Int16" Nullable="false" />
+          <Property Name="ClassType1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ClassTypeNickName" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DailySummery">
+          <Key>
+            <PropertyRef Name="DailySummeryId" />
+          </Key>
+          <Property Name="DailySummeryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SummeryDate" Type="DateTime" Precision="3" />
+          <Property Name="CashInHand" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SubjectFeeThisMonth" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SubjectFeePrevious" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MaintenanceFee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AddminFee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OtherCollection" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TeacherSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OthersSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="ErrorNote" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="ComputerId" Type="Int16" />
+          <Property Name="StudentAdvance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UsedAdvance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Discount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DefaultValue">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PerOfTeacherPay" Type="Single" />
+          <Property Name="MaitanenceFee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OwenerId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MachineId" Type="Int16" />
+          <Property Name="MachineName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="fontSize" Type="Int16" />
+          <Property Name="LastProcessedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastWorkedDate" Type="DateTime" Precision="3" />
+          <Property Name="SummeryPrintedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsOpened" Type="Boolean" Nullable="false" />
+          <Property Name="ReportDate" Type="DateTime" Precision="3" />
+          <Property Name="HasNewTransaction" Type="Boolean" Nullable="false" />
+          <Property Name="OwnerEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="JobCatergoryCode" Type="Int32" />
+          <Property Name="IsFullTime" Type="Boolean" Nullable="false" />
+          <Property Name="IdentificationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdentificationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="AddressLine" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateByUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteID" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BasicSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Username" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginStatus" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EnrollmentID">
+          <Key>
+            <PropertyRef Name="SysID" />
+          </Key>
+          <Property Name="SysID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnrollmentID1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dates" Type="DateTime" Precision="0" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Entity">
+          <Key>
+            <PropertyRef Name="EntityID" />
+          </Key>
+          <Property Name="EntityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contacts" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Office" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Home" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExpenseDetail">
+          <Key>
+            <PropertyRef Name="ExpenseDetailID" />
+          </Key>
+          <Property Name="ExpenseDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dates" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ExpenseID" Type="Int32" Nullable="false" />
+          <Property Name="Account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PayMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="PaidAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="PNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PayTo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Memo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ExpenseFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Descriptions" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Expens">
+          <Key>
+            <PropertyRef Name="ExpenseID" />
+          </Key>
+          <Property Name="ExpenseID" Type="Int32" Nullable="false" />
+          <Property Name="Descriptions" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Deductible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Favor">
+          <Key>
+            <PropertyRef Name="FavorID" />
+          </Key>
+          <Property Name="FavorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IstituteID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectCount" Type="Int32" />
+          <Property Name="Percentage" Type="Double" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="House">
+          <Key>
+            <PropertyRef Name="HouseId" />
+          </Key>
+          <Property Name="HouseId" Type="Int16" Nullable="false" />
+          <Property Name="HouseName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Institute">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstituteID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Indexx" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OD_Employees">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ODAmount" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Stu_TempReg">
+          <Key>
+            <PropertyRef Name="TRID" />
+          </Key>
+          <Property Name="TRID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StuMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParentsMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParentsID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dates" Type="DateTime" Precision="0" />
+          <Property Name="ReferenceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ParentJob" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OldStudents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdentificationType" Type="Int16" />
+          <Property Name="IdentificationNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="AddressLine" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StuMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ParentsMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="ParentsID" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateByUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="HouseId" Type="Int16" />
+          <Property Name="emailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MachineId" Type="Int16" />
+          <Property Name="InstituteID" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="OldStudent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Wishes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Doc" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentAttendance">
+          <Key>
+            <PropertyRef Name="Stu_EntryID" />
+          </Key>
+          <Property Name="Stu_EntryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dates" Type="DateTime" Precision="0" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassSubjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Month" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentClass">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateByUser" Type="Int32" />
+          <Property Name="MachineId" Type="Int16" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentDue">
+          <Key>
+            <PropertyRef Name="StudentDueID" />
+          </Key>
+          <Property Name="StudentDueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassSubjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Due" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Teacherid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dates" Type="DateTime" Precision="0" />
+          <Property Name="Month" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentEnrollment">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntrollmentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassSubjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegisteredDate" Type="DateTime" Precision="3" />
+          <Property Name="PercentageOfFee" Type="Single" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateByUser" Type="Int32" />
+          <Property Name="MachineId" Type="Int16" />
+          <Property Name="Teacherid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Boolean" Nullable="false" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentIndenty">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateByUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeacherPaymentSummery">
+          <Key>
+            <PropertyRef Name="TeacherSummeryId" />
+          </Key>
+          <Property Name="TeacherSummeryId" Type="Int32" Nullable="false" />
+          <Property Name="TeacherCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SummeryDate" Type="DateTime" Precision="0" />
+          <Property Name="ClassSubjectID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TeacherAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="StudentPayment" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NoOfStudent" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="UnitAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ComputerId" Type="Int32" />
+          <Property Name="BillID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Month" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InstituteID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EntrollmentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Teachers_Attendance">
+          <Key>
+            <PropertyRef Name="Tech_EntryID" />
+          </Key>
+          <Property Name="Tech_EntryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tempLecturer">
+          <Key>
+            <PropertyRef Name="LectID" />
+          </Key>
+          <Property Name="LectID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Advance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="SystemID" />
+          </Key>
+          <Property Name="SystemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstituteID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Reference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BillID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="noOfItems" Type="Int16" />
+          <Property Name="IsSettled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateByUser" Type="Int32" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="0" />
+          <Property Name="MachineId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sort" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Month" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EntrollmentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransNote">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Details" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CardTemplate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassID" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Sub1" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Sub2" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Sub3" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Sub4" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Sub5" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Sub6" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Sub7" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Sub8" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Sub9" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="fSize" Type="Int16" />
+          <Property Name="leftIndent" Type="Int16" />
+          <Property Name="TopIndent" Type="Int16" />
+        </EntityType>
+        <EntityType Name="JobTitle">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobTitle1" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Paste_Error">
+          <Key>
+            <PropertyRef Name="IsSettled" />
+          </Key>
+          <Property Name="TransactionID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Customer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ReferenceCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BillID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IsSettled" Type="Boolean" Nullable="false" />
+          <Property Name="noOfItems" Type="Int16" />
+          <Property Name="Details" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PaymentCatergory">
+          <Key>
+            <PropertyRef Name="Amount" />
+          </Key>
+          <Property Name="CategoryID" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="SortOrder" Type="Int16" />
+        </EntityType>
+        <EntityType Name="temp_EX_Student">
+          <Key>
+            <PropertyRef Name="IsDeleted" />
+          </Key>
+          <Property Name="StudentID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="IdentificationType" Type="Int32" />
+          <Property Name="IdentificationNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="AddressLine" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StuMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="ParentsMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="ParentsID" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="School" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateByUser" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="HouseId" Type="Int32" />
+          <Property Name="emailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MachineId" Type="Int32" />
+          <Property Name="InstituteID" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Religion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tempStEnrolToDelete">
+          <Key>
+            <PropertyRef Name="IsDeleted" />
+          </Key>
+          <Property Name="EntrollmentID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StudentID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ClassSubjectID" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="RegisteredDate" Type="DateTime" Precision="3" />
+          <Property Name="PercentageOfFee" Type="Single" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateByUser" Type="Int32" />
+          <Property Name="MachineId" Type="Int16" />
+        </EntityType>
+        <EntityType Name="tempStSubfee">
+          <Key>
+            <PropertyRef Name="IsSettled" />
+          </Key>
+          <Property Name="TransactionID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Customer" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ReferenceCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BillID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IsSettled" Type="Boolean" Nullable="false" />
+          <Property Name="noOfItems" Type="Int16" />
+          <Property Name="Details" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="temptran">
+          <Key>
+            <PropertyRef Name="IsSettled" />
+            <PropertyRef Name="IsDeleted" />
+            <PropertyRef Name="IdT" />
+          </Key>
+          <Property Name="TransactionID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ReferenceCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BillID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="noOfItems" Type="Int16" />
+          <Property Name="IsSettled" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateByUser" Type="Int32" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="IdT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MachineId" Type="Int16" />
+        </EntityType>
+        <EntityType Name="trandToDelete">
+          <Key>
+            <PropertyRef Name="IsSettled" />
+          </Key>
+          <Property Name="TransactionID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ReferenceCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BillID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IsSettled" Type="Boolean" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="nobleEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bills" EntityType="Self.Bill" />
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="ClassSubjects" EntityType="Self.ClassSubject" />
+          <EntitySet Name="ClassTypes" EntityType="Self.ClassType" />
+          <EntitySet Name="DailySummeries" EntityType="Self.DailySummery" />
+          <EntitySet Name="DefaultValues" EntityType="Self.DefaultValue" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="EnrollmentIDS" EntityType="Self.EnrollmentID" />
+          <EntitySet Name="Entities" EntityType="Self.Entity" />
+          <EntitySet Name="ExpenseDetails" EntityType="Self.ExpenseDetail" />
+          <EntitySet Name="Expenses" EntityType="Self.Expens" />
+          <EntitySet Name="Favors" EntityType="Self.Favor" />
+          <EntitySet Name="Houses" EntityType="Self.House" />
+          <EntitySet Name="Institutes" EntityType="Self.Institute" />
+          <EntitySet Name="OD_Employees" EntityType="Self.OD_Employees" />
+          <EntitySet Name="Stu_TempReg" EntityType="Self.Stu_TempReg" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="StudentAttendances" EntityType="Self.StudentAttendance" />
+          <EntitySet Name="StudentClasses" EntityType="Self.StudentClass" />
+          <EntitySet Name="StudentDues" EntityType="Self.StudentDue" />
+          <EntitySet Name="StudentEnrollments" EntityType="Self.StudentEnrollment" />
+          <EntitySet Name="StudentIndenties" EntityType="Self.StudentIndenty" />
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
+          <EntitySet Name="TeacherPaymentSummeries" EntityType="Self.TeacherPaymentSummery" />
+          <EntitySet Name="Teachers_Attendance" EntityType="Self.Teachers_Attendance" />
+          <EntitySet Name="tempLecturers" EntityType="Self.tempLecturer" />
+          <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+          <EntitySet Name="TransNotes" EntityType="Self.TransNote" />
+          <EntitySet Name="CardTemplates" EntityType="Self.CardTemplate" />
+          <EntitySet Name="JobTitles" EntityType="Self.JobTitle" />
+          <EntitySet Name="Paste_Errors" EntityType="Self.Paste_Error" />
+          <EntitySet Name="PaymentCatergories" EntityType="Self.PaymentCatergory" />
+          <EntitySet Name="temp_EX_Student" EntityType="Self.temp_EX_Student" />
+          <EntitySet Name="tempStEnrolToDeletes" EntityType="Self.tempStEnrolToDelete" />
+          <EntitySet Name="tempStSubfees" EntityType="Self.tempStSubfee" />
+          <EntitySet Name="temptrans" EntityType="Self.temptran" />
+          <EntitySet Name="trandToDeletes" EntityType="Self.trandToDelete" />
+          <EntitySet Name="cancel_timetable" EntityType="nobleModel.cancel_timetable" />
+          <EntitySet Name="Events" EntityType="nobleModel.Event" />
+        </EntityContainer>
+        <EntityType Name="cancel_timetable">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Teacher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="updated_date" Type="DateTime" Precision="0" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="years" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="months" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="days" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="employee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ExpireDate" />
+            <PropertyRef Name="IsDeleted" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ExpireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="nobleModelStoreContainer" CdmEntityContainer="nobleEntities">
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="nobleModel.Bill">
+              <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="Dates" ColumnName="Dates" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+                <ScalarProperty Name="Cash" ColumnName="Cash" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="Dues" ColumnName="Dues" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateByUser" ColumnName="UpdateByUser" />
+                <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="PayMode" ColumnName="PayMode" />
+                <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="OffFees" ColumnName="OffFees" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="nobleModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="RegistrationFee" ColumnName="RegistrationFee" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateByUser" ColumnName="UpdateByUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassSubjects">
+            <EntityTypeMapping TypeName="nobleModel.ClassSubject">
+              <MappingFragment StoreEntitySet="ClassSubject">
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="ClassSubjectID" ColumnName="ClassSubjectID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+                <ScalarProperty Name="SubjectFee" ColumnName="SubjectFee" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateByUser" ColumnName="UpdateByUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassTypes">
+            <EntityTypeMapping TypeName="nobleModel.ClassType">
+              <MappingFragment StoreEntitySet="ClassType">
+                <ScalarProperty Name="ClassTypeId" ColumnName="ClassTypeId" />
+                <ScalarProperty Name="ClassType1" ColumnName="ClassType" />
+                <ScalarProperty Name="ClassTypeNickName" ColumnName="ClassTypeNickName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DailySummeries">
+            <EntityTypeMapping TypeName="nobleModel.DailySummery">
+              <MappingFragment StoreEntitySet="DailySummery">
+                <ScalarProperty Name="DailySummeryId" ColumnName="DailySummeryId" />
+                <ScalarProperty Name="SummeryDate" ColumnName="SummeryDate" />
+                <ScalarProperty Name="CashInHand" ColumnName="CashInHand" />
+                <ScalarProperty Name="SubjectFeeThisMonth" ColumnName="SubjectFeeThisMonth" />
+                <ScalarProperty Name="SubjectFeePrevious" ColumnName="SubjectFeePrevious" />
+                <ScalarProperty Name="MaintenanceFee" ColumnName="MaintenanceFee" />
+                <ScalarProperty Name="AddminFee" ColumnName="AddminFee" />
+                <ScalarProperty Name="OtherCollection" ColumnName="OtherCollection" />
+                <ScalarProperty Name="TeacherSalary" ColumnName="TeacherSalary" />
+                <ScalarProperty Name="OthersSalary" ColumnName="OthersSalary" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ErrorNote" ColumnName="ErrorNote" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="ComputerId" ColumnName="ComputerId" />
+                <ScalarProperty Name="StudentAdvance" ColumnName="StudentAdvance" />
+                <ScalarProperty Name="UsedAdvance" ColumnName="UsedAdvance" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefaultValues">
+            <EntityTypeMapping TypeName="nobleModel.DefaultValue">
+              <MappingFragment StoreEntitySet="DefaultValue">
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="PerOfTeacherPay" ColumnName="PerOfTeacherPay" />
+                <ScalarProperty Name="MaitanenceFee" ColumnName="MaitanenceFee" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="OwenerId" ColumnName="OwenerId" />
+                <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="fontSize" ColumnName="fontSize" />
+                <ScalarProperty Name="LastProcessedDate" ColumnName="LastProcessedDate" />
+                <ScalarProperty Name="LastWorkedDate" ColumnName="LastWorkedDate" />
+                <ScalarProperty Name="SummeryPrintedDate" ColumnName="SummeryPrintedDate" />
+                <ScalarProperty Name="IsOpened" ColumnName="IsOpened" />
+                <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+                <ScalarProperty Name="HasNewTransaction" ColumnName="HasNewTransaction" />
+                <ScalarProperty Name="OwnerEmail" ColumnName="OwnerEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="nobleModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="JobCatergoryCode" ColumnName="JobCatergoryCode" />
+                <ScalarProperty Name="IsFullTime" ColumnName="IsFullTime" />
+                <ScalarProperty Name="IdentificationType" ColumnName="IdentificationType" />
+                <ScalarProperty Name="IdentificationNo" ColumnName="IdentificationNo" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+                <ScalarProperty Name="TelephoneNo" ColumnName="TelephoneNo" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateByUser" ColumnName="UpdateByUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LoginStatus" ColumnName="LoginStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnrollmentIDS">
+            <EntityTypeMapping TypeName="nobleModel.EnrollmentID">
+              <MappingFragment StoreEntitySet="EnrollmentIDS">
+                <ScalarProperty Name="SysID" ColumnName="SysID" />
+                <ScalarProperty Name="EnrollmentID1" ColumnName="EnrollmentID" />
+                <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+                <ScalarProperty Name="Dates" ColumnName="Dates" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entities">
+            <EntityTypeMapping TypeName="nobleModel.Entity">
+              <MappingFragment StoreEntitySet="Entities">
+                <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contacts" ColumnName="Contacts" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="Home" ColumnName="Home" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpenseDetails">
+            <EntityTypeMapping TypeName="nobleModel.ExpenseDetail">
+              <MappingFragment StoreEntitySet="ExpenseDetail">
+                <ScalarProperty Name="ExpenseDetailID" ColumnName="ExpenseDetailID" />
+                <ScalarProperty Name="Dates" ColumnName="Dates" />
+                <ScalarProperty Name="ExpenseID" ColumnName="ExpenseID" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="PayMode" ColumnName="PayMode" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="PNumber" ColumnName="PNumber" />
+                <ScalarProperty Name="PayTo" ColumnName="PayTo" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="ExpenseFrom" ColumnName="ExpenseFrom" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expenses">
+            <EntityTypeMapping TypeName="nobleModel.Expens">
+              <MappingFragment StoreEntitySet="Expenses">
+                <ScalarProperty Name="ExpenseID" ColumnName="ExpenseID" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+                <ScalarProperty Name="Deductible" ColumnName="Deductible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Favors">
+            <EntityTypeMapping TypeName="nobleModel.Favor">
+              <MappingFragment StoreEntitySet="Favors">
+                <ScalarProperty Name="FavorID" ColumnName="FavorID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="IstituteID" ColumnName="IstituteID" />
+                <ScalarProperty Name="SubjectCount" ColumnName="SubjectCount" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Houses">
+            <EntityTypeMapping TypeName="nobleModel.House">
+              <MappingFragment StoreEntitySet="House">
+                <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+                <ScalarProperty Name="HouseName" ColumnName="HouseName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Institutes">
+            <EntityTypeMapping TypeName="nobleModel.Institute">
+              <MappingFragment StoreEntitySet="Institute">
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+                <ScalarProperty Name="Indexx" ColumnName="Indexx" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OD_Employees">
+            <EntityTypeMapping TypeName="nobleModel.OD_Employees">
+              <MappingFragment StoreEntitySet="OD_Employees">
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ODAmount" ColumnName="ODAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stu_TempReg">
+            <EntityTypeMapping TypeName="nobleModel.Stu_TempReg">
+              <MappingFragment StoreEntitySet="Stu_TempReg">
+                <ScalarProperty Name="TRID" ColumnName="TRID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="StuMobile" ColumnName="StuMobile" />
+                <ScalarProperty Name="ParentsMobile" ColumnName="ParentsMobile" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="ParentsID" ColumnName="ParentsID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Dates" ColumnName="Dates" />
+                <ScalarProperty Name="ReferenceCode" ColumnName="ReferenceCode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="ParentJob" ColumnName="ParentJob" />
+                <ScalarProperty Name="OldStudents" ColumnName="OldStudents" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="nobleModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="IdentificationType" ColumnName="IdentificationType" />
+                <ScalarProperty Name="IdentificationNo" ColumnName="IdentificationNo" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="StuMobile" ColumnName="StuMobile" />
+                <ScalarProperty Name="ParentsMobile" ColumnName="ParentsMobile" />
+                <ScalarProperty Name="ParentsID" ColumnName="ParentsID" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateByUser" ColumnName="UpdateByUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+                <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="OldStudent" ColumnName="OldStudent" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Wishes" ColumnName="Wishes" />
+                <ScalarProperty Name="Doc" ColumnName="Doc" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentAttendances">
+            <EntityTypeMapping TypeName="nobleModel.StudentAttendance">
+              <MappingFragment StoreEntitySet="StudentAttendance">
+                <ScalarProperty Name="Stu_EntryID" ColumnName="Stu_EntryID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+                <ScalarProperty Name="Dates" ColumnName="Dates" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="ClassSubjectID" ColumnName="ClassSubjectID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentClasses">
+            <EntityTypeMapping TypeName="nobleModel.StudentClass">
+              <MappingFragment StoreEntitySet="StudentClass">
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateByUser" ColumnName="UpdateByUser" />
+                <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentDues">
+            <EntityTypeMapping TypeName="nobleModel.StudentDue">
+              <MappingFragment StoreEntitySet="StudentDues">
+                <ScalarProperty Name="StudentDueID" ColumnName="StudentDueID" />
+                <ScalarProperty Name="ClassSubjectID" ColumnName="ClassSubjectID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Due" ColumnName="Due" />
+                <ScalarProperty Name="Teacherid" ColumnName="Teacherid" />
+                <ScalarProperty Name="Dates" ColumnName="Dates" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentEnrollments">
+            <EntityTypeMapping TypeName="nobleModel.StudentEnrollment">
+              <MappingFragment StoreEntitySet="StudentEnrollment">
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="EntrollmentID" ColumnName="EntrollmentID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="ClassSubjectID" ColumnName="ClassSubjectID" />
+                <ScalarProperty Name="RegisteredDate" ColumnName="RegisteredDate" />
+                <ScalarProperty Name="PercentageOfFee" ColumnName="PercentageOfFee" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateByUser" ColumnName="UpdateByUser" />
+                <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+                <ScalarProperty Name="Teacherid" ColumnName="Teacherid" />
+                <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentIndenties">
+            <EntityTypeMapping TypeName="nobleModel.StudentIndenty">
+              <MappingFragment StoreEntitySet="StudentIndenty">
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="nobleModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateByUser" ColumnName="UpdateByUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeacherPaymentSummeries">
+            <EntityTypeMapping TypeName="nobleModel.TeacherPaymentSummery">
+              <MappingFragment StoreEntitySet="TeacherPaymentSummery">
+                <ScalarProperty Name="TeacherSummeryId" ColumnName="TeacherSummeryId" />
+                <ScalarProperty Name="TeacherCode" ColumnName="TeacherCode" />
+                <ScalarProperty Name="SummeryDate" ColumnName="SummeryDate" />
+                <ScalarProperty Name="ClassSubjectID" ColumnName="ClassSubjectID" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="TeacherAmount" ColumnName="TeacherAmount" />
+                <ScalarProperty Name="StudentPayment" ColumnName="StudentPayment" />
+                <ScalarProperty Name="NoOfStudent" ColumnName="NoOfStudent" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UnitAmount" ColumnName="UnitAmount" />
+                <ScalarProperty Name="ComputerId" ColumnName="ComputerId" />
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+                <ScalarProperty Name="EntrollmentID" ColumnName="EntrollmentID" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers_Attendance">
+            <EntityTypeMapping TypeName="nobleModel.Teachers_Attendance">
+              <MappingFragment StoreEntitySet="Teachers_Attendance">
+                <ScalarProperty Name="Tech_EntryID" ColumnName="Tech_EntryID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tempLecturers">
+            <EntityTypeMapping TypeName="nobleModel.tempLecturer">
+              <MappingFragment StoreEntitySet="tempLecturer">
+                <ScalarProperty Name="LectID" ColumnName="LectID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Advance" ColumnName="Advance" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="nobleModel.Transaction">
+              <MappingFragment StoreEntitySet="Transactions">
+                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="noOfItems" ColumnName="noOfItems" />
+                <ScalarProperty Name="IsSettled" ColumnName="IsSettled" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateByUser" ColumnName="UpdateByUser" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="EntrollmentID" ColumnName="EntrollmentID" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransNotes">
+            <EntityTypeMapping TypeName="nobleModel.TransNote">
+              <MappingFragment StoreEntitySet="TransNote">
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CardTemplates">
+            <EntityTypeMapping TypeName="nobleModel.CardTemplate">
+              <MappingFragment StoreEntitySet="CardTemplate">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="Sub1" ColumnName="Sub1" />
+                <ScalarProperty Name="Sub2" ColumnName="Sub2" />
+                <ScalarProperty Name="Sub3" ColumnName="Sub3" />
+                <ScalarProperty Name="Sub4" ColumnName="Sub4" />
+                <ScalarProperty Name="Sub5" ColumnName="Sub5" />
+                <ScalarProperty Name="Sub6" ColumnName="Sub6" />
+                <ScalarProperty Name="Sub7" ColumnName="Sub7" />
+                <ScalarProperty Name="Sub8" ColumnName="Sub8" />
+                <ScalarProperty Name="Sub9" ColumnName="Sub9" />
+                <ScalarProperty Name="fSize" ColumnName="fSize" />
+                <ScalarProperty Name="leftIndent" ColumnName="leftIndent" />
+                <ScalarProperty Name="TopIndent" ColumnName="TopIndent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobTitles">
+            <EntityTypeMapping TypeName="nobleModel.JobTitle">
+              <MappingFragment StoreEntitySet="JobTitle">
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="JobTitle1" ColumnName="JobTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paste_Errors">
+            <EntityTypeMapping TypeName="nobleModel.Paste_Error">
+              <MappingFragment StoreEntitySet="Paste Errors">
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ReferenceCode" ColumnName="ReferenceCode" />
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsSettled" ColumnName="IsSettled" />
+                <ScalarProperty Name="noOfItems" ColumnName="noOfItems" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentCatergories">
+            <EntityTypeMapping TypeName="nobleModel.PaymentCatergory">
+              <MappingFragment StoreEntitySet="PaymentCatergory">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="temp_EX_Student">
+            <EntityTypeMapping TypeName="nobleModel.temp_EX_Student">
+              <MappingFragment StoreEntitySet="temp_EX_Student">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="IdentificationType" ColumnName="IdentificationType" />
+                <ScalarProperty Name="IdentificationNo" ColumnName="IdentificationNo" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="StuMobile" ColumnName="StuMobile" />
+                <ScalarProperty Name="ParentsMobile" ColumnName="ParentsMobile" />
+                <ScalarProperty Name="ParentsID" ColumnName="ParentsID" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateByUser" ColumnName="UpdateByUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="HouseId" ColumnName="HouseId" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+                <ScalarProperty Name="InstituteID" ColumnName="InstituteID" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tempStEnrolToDeletes">
+            <EntityTypeMapping TypeName="nobleModel.tempStEnrolToDelete">
+              <MappingFragment StoreEntitySet="tempStEnrolToDelete">
+                <ScalarProperty Name="EntrollmentID" ColumnName="EntrollmentID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="ClassSubjectID" ColumnName="ClassSubjectID" />
+                <ScalarProperty Name="RegisteredDate" ColumnName="RegisteredDate" />
+                <ScalarProperty Name="PercentageOfFee" ColumnName="PercentageOfFee" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateByUser" ColumnName="UpdateByUser" />
+                <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tempStSubfees">
+            <EntityTypeMapping TypeName="nobleModel.tempStSubfee">
+              <MappingFragment StoreEntitySet="tempStSubfee">
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ReferenceCode" ColumnName="ReferenceCode" />
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsSettled" ColumnName="IsSettled" />
+                <ScalarProperty Name="noOfItems" ColumnName="noOfItems" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="temptrans">
+            <EntityTypeMapping TypeName="nobleModel.temptran">
+              <MappingFragment StoreEntitySet="temptrans">
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ReferenceCode" ColumnName="ReferenceCode" />
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="noOfItems" ColumnName="noOfItems" />
+                <ScalarProperty Name="IsSettled" ColumnName="IsSettled" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdateByUser" ColumnName="UpdateByUser" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="IdT" ColumnName="IdT" />
+                <ScalarProperty Name="MachineId" ColumnName="MachineId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trandToDeletes">
+            <EntityTypeMapping TypeName="nobleModel.trandToDelete">
+              <MappingFragment StoreEntitySet="trandToDelete">
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ReferenceCode" ColumnName="ReferenceCode" />
+                <ScalarProperty Name="BillID" ColumnName="BillID" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsSettled" ColumnName="IsSettled" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cancel_timetable">
+            <EntityTypeMapping TypeName="nobleModel.cancel_timetable">
+              <MappingFragment StoreEntitySet="cancel_timetable">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="employee" ColumnName="employee" />
+                <ScalarProperty Name="days" ColumnName="days" />
+                <ScalarProperty Name="months" ColumnName="months" />
+                <ScalarProperty Name="years" ColumnName="years" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Teacher" ColumnName="Teacher" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="nobleModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
